@@ -1,0 +1,2 @@
+require('./ipcToLogin')
+require('./ipcToIndex')

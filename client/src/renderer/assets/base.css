@@ -1,0 +1,7 @@
+.no-drag{
+    -webkit-app-region:no-drag;
+}
+body { 
+  -webkit-app-region:drag;
+  overflow: hidden;
+}
