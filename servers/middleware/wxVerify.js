@@ -7,8 +7,8 @@ var config = require('./../../configs/config');
 
 const _cfg = Object.assign(config.wxCfg,config.wxapi);
 
+//  微信签名认证
 exports.wx_signature = async (ctx, next)=>{
-    console.log('微信验证')
     var token = _cfg.token;
     var signature = ctx.query.signature;
     var timestamp = ctx.query.timestamp;
@@ -23,7 +23,7 @@ exports.wx_signature = async (ctx, next)=>{
     await next();
 }
 
-
+// 获取并坚持微信token
 function GetToken(opt) {
     var _this = this;
     this.appid = opt.appid;

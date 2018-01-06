@@ -3,8 +3,13 @@ const configs = require('./configs/config');
 const koaBody = require('koa-body')
 const app = new Koa();
 const router = require('./servers/routers');
+const log4js = require('koa-log4')
+const okeys = require('./configs/redisKeys');
+app.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }));
 
 global.app = {};
+global.app.okeys = okeys;
+
 app.use(koaBody());
 
 //  引入mongoose

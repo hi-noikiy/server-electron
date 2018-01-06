@@ -10,5 +10,7 @@ exports.index = async(ctx)=>{
 
 exports.wxReceiveMsg = async (ctx)=>{
     console.log('接收微信消息')
+    const val = await app.redisClient.hset('token', 'wx_token','111222');
+    console.log(val)
     console.log(ctx.body.xml)
 }
