@@ -27,7 +27,9 @@ class RedisCache {
                 if (err || !rest) {
                     reject(err);
                 } else {
-                    resolve(rest);
+                    const data = JSON.parse(rest);
+                    const _data = data.value ||{}
+                    resolve(_data);
                 }
             });
         })  
