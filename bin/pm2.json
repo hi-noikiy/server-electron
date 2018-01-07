@@ -2,10 +2,9 @@
     "apps": [
       {
         "name": "zc_server",
-        "script": "bin/index.js",
-        "node_args": "--harmony-async-await",
+        "script": "./app.js",
         "env": {
-          "NODE_ENV": "real"
+          "NODE_ENV": "production"
         }
       }
     ]

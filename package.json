@@ -10,7 +10,8 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "start":"pm2 start bin/pm2.json"
   },
   "author": "",
   "license": "ISC",
