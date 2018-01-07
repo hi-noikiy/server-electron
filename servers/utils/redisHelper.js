@@ -2,12 +2,13 @@ const redis = require('redis');
 class RedisCache {
     constructor(options){
         this.url = options.url;
+        this.option = options.option || {};
         this.client  = null; 
     }
     connect() {
-        this.client = redis.createClient(this.url);
+        this.client = redis.createClient(this.url,this.option);
     }
-    
+      
     hset(key, field, value) {
         return new Promise((resolve, reject) => {
             if (!key || !field) reject('miss value');
@@ -38,6 +39,9 @@ class RedisCache {
                 }
             });
         })  
+    }
+    hdels(key, field) {
+        this.client.hdel(key, field)
     }
 }
 

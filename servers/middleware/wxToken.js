@@ -3,7 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var cryptoHelper = require('./../utils/cryptoHelper');
 
-var config = require('./../../configs/config');
+var config = require('./../configs/config');
+var redisKeys = require('./../configs/redisKeys');
 
 const _cfg = Object.assign(config.wxCfg,config.wxapi);
 
@@ -22,7 +23,7 @@ exports.wx_signature = async (ctx, next)=>{
     }
 }
 
-// 获取并坚持微信token
+// 获取并检测微信token是否过期
 function GetToken(opt) {
     var _this = this;
     this.appid = opt.appid;
@@ -64,11 +65,11 @@ GetToken.prototype.getAccessToken = function(url) {
 }
 
 GetToken.prototype.readAccessToken = async function() {
-        var key = app.okeys.wxToken();
-        return await app.redisClient.hgetVal(key, 'token');
+    var key = redisKeys.wxToken();
+    return await app.redisClient.hgetVal(key, 'token');
 }
 
 GetToken.prototype.writeAccessToken = async function (data) {
-    var key = app.okeys.wxToken();
+    var key = redisKeys.wxToken();
     await app.redisClient.hset(key, 'token', data);
 }

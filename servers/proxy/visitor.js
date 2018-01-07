@@ -8,3 +8,6 @@ exports.save = async (visitors) => {
 exports.findOne = async (where) => {
     return Visitor.findOne(where);
 }
+exports.addOrUpdate = async (update) => {
+    return Visitor.update(update)
+}

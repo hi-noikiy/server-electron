@@ -1,5 +1,3 @@
-
-
 const {ipcMain} = require('electron')
 const IPCLOGIN = require('./../../ipcCfg').LOGINIPC;
 

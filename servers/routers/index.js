@@ -7,7 +7,7 @@ const page = require('./page');
 const wx = require('./wx');
 
 // 加入版本号前缀
-_version([api,auth],'/v1.0/:router?');
+_version([api,auth],'/v1.0/:router');
 
 // 转发路由
 // web page 路由
@@ -24,6 +24,8 @@ router.use('/wx', wx.routes(), wx.allowedMethods());
 
 module.exports = router;
 
+
+// 加入版本号前缀
 function _version(routers,url){
     if(!Array.isArray(routers)){
         console.error('the routers must be array');

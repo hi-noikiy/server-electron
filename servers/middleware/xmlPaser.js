@@ -1,3 +1,4 @@
+
 const xml = require('./../utils/xmlTool')
 // xml转json
 module.exports = async (ctx, next) => {
@@ -16,31 +17,13 @@ module.exports = async (ctx, next) => {
             })
 
             await promise.then((result) => {
-                    var _data = { xml: _toObect(result.xml) };
-                    ctx.body = _data;
+                    ctx.body = result;
                 })
                 .catch((e) => {
                     e.status = 400
                 })
-
             next()
         } else {
             await next()
         }
-    }
-
-
-    function _toObect(obj){
-        _obj = {};
-        if(obj){
-
-            for(let key in obj){
-                if(obj[key] && Array.isArray(obj[key])){
-                    _obj[key] = obj[key][0]||{};
-                }
-            }
-
-
-        }
-        return _obj;
     }

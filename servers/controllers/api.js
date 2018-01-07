@@ -2,11 +2,25 @@
  * 该控制器为系统后台业务逻辑 
  */
 exports.api = async (ctx)=>{
-    console.log('222----')
-    console.log(ctx.params)
     const router = ctx.params.router;
-    console.log(router)
+    console.log(ctx.params)
     ctx.response.body = {
         success:true
+    }
+}
+
+exports.untoken = async (ctx) => {
+    const router = ctx.params.router;
+    console.log(ctx.params)
+    ctx.response.body = {
+        success: true
+    }
+}
+
+exports.unauth = async (ctx) => {
+    const router = ctx.params.router;
+    console.log(ctx.params)
+    ctx.response.body = {
+        success: true
     }
 }

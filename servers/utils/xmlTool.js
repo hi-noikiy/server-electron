@@ -3,7 +3,7 @@ const xml2js = require('xml2js')
 exports.xmlToJson = (str) => {
      return new Promise((resolve, reject) => {
         const parseString = xml2js.parseString
-        parseString(str, (err, result) => {
+        parseString(str, { explicitArray: false }, (err, result) => {
             if (err) {
                 reject(err)
             } else {

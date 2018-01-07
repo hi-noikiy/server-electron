@@ -1,5 +1,5 @@
 var config={
-    v:'v1.0',
+    v:'v1.0',// 版本号
     server:{
         port:3000
     },
@@ -13,7 +13,8 @@ var config={
         name:'z_chong'
     },
     router:{
-        unverify:'E001-001' // 免验证token路由
+        unverifyToken: 'E001', // 免验证token路由
+        unverifyAuth:'A001' // 免验证权限路由
     },
     // 微信 认证登陆获取签名配置
     wxCfg:{
@@ -36,6 +37,9 @@ var config={
             unsetMembersTag:'https://api.weixin.qq.com/cgi-bin/tags/members/batchuntagging?access_token=',
             getMemberTagLists:'https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=',
         }
+    },
+    InvalidTime: {
+        apitoken:3600*1000*4 //api token过期时长
     }
 }
 
