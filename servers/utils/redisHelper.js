@@ -7,6 +7,7 @@ class RedisCache {
     connect() {
         this.client = redis.createClient(this.url);
     }
+    
     hset(key, field, value) {
         return new Promise((resolve, reject) => {
             if (!key || !field) reject('miss value');
@@ -27,9 +28,13 @@ class RedisCache {
                 if (err || !rest) {
                     reject(err);
                 } else {
-                    const data = JSON.parse(rest);
-                    const _data = data.value ||{}
-                    resolve(_data);
+                    try {
+                        const data = JSON.parse(rest);
+                        const _data = data.value ||{}
+                        resolve(_data);
+                    } catch (e) {
+                        reject(e);
+                    }
                 }
             });
         })  

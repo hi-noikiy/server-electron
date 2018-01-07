@@ -1,7 +1,7 @@
 var axios = require('axios');
 var fs = require('fs');
 var path = require('path');
-var cryptoHelper = require('./../ulits/cryptoHelper');
+var cryptoHelper = require('./../utils/cryptoHelper');
 
 var config = require('./../../configs/config');
 

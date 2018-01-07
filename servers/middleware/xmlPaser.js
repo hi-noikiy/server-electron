@@ -1,5 +1,5 @@
-const xml = require('./../ulits/xmlTool')
-
+const xml = require('./../utils/xmlTool')
+// xml转json
 module.exports = async (ctx, next) => {
         if (ctx.method == 'POST' && ctx.is('text/xml')) {
             let promise = new Promise(function (resolve, reject) {

@@ -13,14 +13,14 @@ global.app.okeys = okeys;
 app.use(koaBody());
 
 //  引入mongoose
-const MongoDb = require('./servers/ulits/mongodbHelper');
+const MongoDb = require('./servers/utils/mongodbHelper');
 const db = null;
 new MongoDb(configs.mongodb).db().then(function(db){
   db = db;
 });
 
 //  引入redis
-const Redis = require('./servers/ulits/redisHelper');
+const Redis = require('./servers/utils/redisHelper');
 
 //建立一个reidis 实例 然后挂载到全局
 const redisClient = new Redis({url:configs.redis.host + configs.redis.port});

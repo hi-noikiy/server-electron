@@ -3,7 +3,7 @@
  */
 const proxy = require('./../proxy');
 const User = proxy.User;
-const cryptoHelper = require('./../ulits/cryptoHelper');
+const cryptoHelper = require('./../utils/cryptoHelper');
 
 // 请求登陆
 exports.login = async (ctx)=>{
@@ -27,7 +27,7 @@ exports.login = async (ctx)=>{
     }
 }
 
-
+// 注册
 exports.signup = async (ctx)=>{
     const data = ctx.request.body;
     try{

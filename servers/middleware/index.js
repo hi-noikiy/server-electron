@@ -7,4 +7,4 @@ const wxReqXmlToJson = require('./xmlPaser');
 
 exports.checkToken = check_code.checkToken // 验证token 
 exports.wxToken = wxToken.wx_signature // 验证微信token 
-exports.wxReqXmlToJson = wxReqXmlToJson // 验证微信token 
+exports.wxReqXmlToJson = wxReqXmlToJson // 微信请求 xml 转 json 
