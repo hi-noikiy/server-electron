@@ -3,11 +3,13 @@
 #### 开发环境启动
 1. 服务端
 ```
+$ npm i
 $ npm run dev
 ```
 #### pm2启动
 ```
-
+$ npm i
+$ npm run start
 ```
 ### 路由分发、权限、token的管理
 #### 路由分发    
