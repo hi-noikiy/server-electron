@@ -11,6 +11,7 @@
 *  weixin 等第三方接入
 ## 服务端
 #### 文件目录结构
+
 ```
 ├── bin
 │   ├── index.js
@@ -86,6 +87,7 @@ $ apidoc -i servers/controllers -o apidoc/
 #### 路由分发    
    创建四个子路由，分别webpage、wx、api接口、统一权限登录验证路由，如果后续要继续开发更多路由，则在这里继续增加子路由，也可以在子路由下面继续增加子路由。
    api、统一权限登录验证路由前面加入版本号控制及路由类型
+
    ```
     //router/index.js
     // 加入版本号前缀
@@ -117,8 +119,8 @@ $ apidoc -i servers/controllers -o apidoc/
             }
         })
     }
-   ```
 
+   ```
 #### token检测、权限认证
     在api 路由中,加入token、权限检测中间件，由于有些api中无效token或者权限检测的，在配置文件中定义俩个无token验证及权限检测的路由
     当遇到这俩个特定路由的时候，直接跳过检测，为了防止伪造免检测路由，在接口路由中加入一层检测是否有伪造的可能
@@ -160,6 +162,7 @@ $ apidoc -i servers/controllers -o apidoc/
 * element-ui 前端ui库
 
 #### 文件目录结构 client文件
+
 ```
 ├── client
 │   └── src
