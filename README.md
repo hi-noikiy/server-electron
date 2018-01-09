@@ -121,11 +121,12 @@ $ apidoc -i servers/controllers -o apidoc/
     }
 
    ```
-#### token检测、权限认证
-    在api 路由中,加入token、权限检测中间件，由于有些api中无效token或者权限检测的，在配置文件中定义俩个无token验证及权限检测的路由
+
+#### token检测、权限认证    
+   在api 路由中,加入token、权限检测中间件，由于有些api中无效token或者权限检测的，在配置文件中定义俩个无token验证及权限检测的路由
     当遇到这俩个特定路由的时候，直接跳过检测，为了防止伪造免检测路由，在接口路由中加入一层检测是否有伪造的可能
 
-    ```
+   ```
     // configs/config 文件
     router:{
         unverifyToken: 'E001', // 免验证token路由
@@ -152,7 +153,9 @@ $ apidoc -i servers/controllers -o apidoc/
             }
         }
     }
+
    ```
+
 ## pc桌面应用
 
 * nodb 做本地数据库 
