@@ -1,15 +1,26 @@
 const Koa = require('koa');
 const configs = require('./servers/configs/config');
 const koaBody = require('koa-body')
+const path = require('path');
+const serve = require('koa-static2');
 const app = new Koa();
 const router = require('./servers/routers');
-const log4js = require('koa-log4')
-app.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }));
+
+//log工具
+const logger = require('./servers/middleware/logger');
+// logger
+app.use(logger);
 
 global.app = {};
 
 app.use(koaBody());
 
+app.use(serve("static", __dirname + "/views"));
+
+// 开发环境部署文档
+if (process.env.NODE_ENV != 'production') {
+  app.use(serve("static", __dirname + "/apidoc"));
+}
 //  引入mongoose
 const MongoDb = require('./servers/utils/mongodbHelper');
 const db = null;

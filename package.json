@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "node app.js",
-    "start":"pm2 start bin/pm2.json"
+    "start": "pm2 start bin/pm2.json"
   },
   "author": "",
   "license": "ISC",
@@ -21,9 +21,10 @@
     "jsonwebtoken": "^8.1.0",
     "koa": "^2.4.1",
     "koa-body": "^2.5.0",
-    "koa-log4": "^2.3.0",
     "koa-router": "^7.3.0",
+    "koa-static2": "^0.1.8",
     "koa-xml-body": "^2.0.0",
+    "log4js": "^2.4.1",
     "mongoose": "^5.0.0-rc1",
     "redis": "^2.8.0",
     "uuid": "^3.1.0",

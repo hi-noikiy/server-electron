@@ -5,3 +5,5 @@
 /client/dist
 /.vscode
 .vscode/.vscode
+./apidoc
+./logs

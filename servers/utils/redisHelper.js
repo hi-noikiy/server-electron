@@ -1,3 +1,5 @@
+
+
 const redis = require('redis');
 class RedisCache {
     constructor(options){
@@ -42,6 +44,15 @@ class RedisCache {
     }
     hdels(key, field) {
         this.client.hdel(key, field)
+    }
+    mutli(conmand) {
+        return new Promise((resolve, reject) => {
+            if (!Array.isArray(conmand)) reject('the conmand must be Array');
+            this.client.multi(conmand).exec((err, replies)=> {
+                if (err) reject(err);
+                else resolve(replies)
+            });
+        })
     }
 }
 

@@ -16,3 +16,18 @@ exports.wxToken = function(){
 exports.apiToken = function () {
     return 'api_token';
 }
+
+/**
+ * webpage
+ * token 
+ */
+exports.webToken = function () {
+    return 'web_token';
+}
+
+/**
+ * 用户登陆状态 
+ */
+exports.onlieStatus = function () {
+    return 'user_status';
+}

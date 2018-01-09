@@ -1,11 +1,13 @@
 /**
  * 该控制器web 网页业务逻辑
  */
+const Token = require('./../utils/token');
+const redisKeys = require('./../configs/redisKeys');
+const middleware = require('./../middleware');
 
 exports.index = async(ctx)=>{
-    console.log('index')
-    ctx.response.type='application/json';
-    ctx.response.body={
-        success:'index'
-    }
+    const access_token = ctx.cookies.get('token');
+    var key = redisKeys.webToken();
+    const user = await middleware.getTokenUser(key, access_token);
+    ctx.response.body ='<h1>test</h1>'
 }

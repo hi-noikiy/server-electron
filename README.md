@@ -9,6 +9,7 @@
 * 使用es7 async/await 语法
 
 *  weixin 等第三方接入
+## 服务端
 #### 文件目录结构
 ```
 ├── bin
@@ -55,7 +56,6 @@
 ├── README.md
 └── package.json
 ```
-### 服务端
 #### 开发环境启动
 ```
 $ npm i
@@ -66,6 +66,14 @@ $ npm run dev
 $ npm i
 $ npm run start
 ```
+#### 输出文档 
+文档 apidoc自动生成工具 http://apidocjs.com/
+```
+$ apidoc -i servers/controllers -o apidoc/
+
+```
+访问：http://localhost:3000/static/index.html 查看文档
+
 ### 内网穿墙工具
    由于微信开发环境中需要与远程的微信服务器进行通信，那么需要一个工具将内网的本地服务器能被外网访问，这里使用的是ngrok 
    官网地址：https://ngrok.com/download
@@ -114,6 +122,7 @@ $ npm run start
 #### token检测、权限认证
     在api 路由中,加入token、权限检测中间件，由于有些api中无效token或者权限检测的，在配置文件中定义俩个无token验证及权限检测的路由
     当遇到这俩个特定路由的时候，直接跳过检测，为了防止伪造免检测路由，在接口路由中加入一层检测是否有伪造的可能
+
     ```
     // configs/config 文件
     router:{
@@ -141,6 +150,37 @@ $ npm run start
             }
         }
     }
-   ``````
+   ```
+## pc桌面应用
 
-   
+* nodb 做本地数据库 
+
+* vue-electron vue集成electron 脚手架
+
+* element-ui 前端ui库
+
+#### 文件目录结构 client文件
+```
+├── client
+│   └── src
+|        ├── main
+|        |   ├── configs
+|        |   ├── ipc
+|        |   ├── utils
+|        |   ├── index.js
+|        |   └── index.dev.js
+|        ├── renderer
+|        |   ├── assets
+|        |   ├── login
+|        |   └── mainRenderer
+|        ├── index.ejs
+|        └── ipcCfg.js
+├── README.md
+└── package.json
+```
+#### 开发环境启动
+```
+$ npm i
+$ npm run dev
+```
+#### 主进程与渲染进程通讯
