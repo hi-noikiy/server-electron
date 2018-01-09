@@ -5,7 +5,7 @@ let logUtil = {};
 
 const resLogger = log4js.getLogger("result");
 const errorLogger = log4js.getLogger("error");
-const consoleLogger = log4js.getLogger();
+const consoleLogger = log4js.getLogger('default');
 
 // 封装错误日志
 logUtil.logError = function (ctx, error, resTime) {
@@ -22,7 +22,7 @@ logUtil.logResponse = function (ctx, resTime) {
 };
 
 // 封装打印日志
-logUtil.logInfo = function (info) {
+logUtil.log = function (info) {
     if (info) {
         consoleLogger.info(formatInfo(info));
     }

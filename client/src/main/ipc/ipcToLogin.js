@@ -14,16 +14,6 @@ const winURL = FilesUrl.index;
 ipcMain.on(IPCLOGIN.LOGIN, (event, arg) => {
     
     win(winURL, indexOptions);
-    axios({
-        method: 'post',
-        url: api.url + api.auth + api.version + api.router +'/login',
-        data: {
-            username: arg.username,
-            password: arg.password,
-            type:1
-        }
-    }).then(data => {
-        console.log(data)
-    })
+    console.log(arg)
     event.sender.send(IPCLOGIN.LOGIN, {success:true})
 })

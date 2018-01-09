@@ -46,44 +46,54 @@ exports.login = async (ctx)=>{
     password = cryptoHelper.SHA1(password);
     let where = { username: username, type: 0 };
     if (data.type) where.type = data.type; 
-    let _user = await User.findOne({ username: username });
-    if (_user && password === _user.password) {
-        var obj = {
-            id: _user.id,
-            type: _user.type,
-            email: _user.email,
-            phone: _user.phone,
-            username: _user.username,
-            nickname: _user.nickname
-        };
-        var nowTime = Date.now();
-        // 生成token
-        const token = Token.newToken(JSON.stringify(obj), String(nowTime));
-        // 保存用户状态
-        var onlieStatus = redisKeys.onlieStatus();
-        await app.redisClient.hset(onlieStatus, obj.id, { status: 1 });
-        // 返回
-        if (data.type) {
-            // 保存token
-            var key = redisKeys.apiToken();
-            await app.redisClient.hset(key, token, { signature: nowTime, expTime: nowTime });
+    try { 
+        let _user = await User.findOne({ username: username });
+       
+        if (_user && password === _user.password) {
+            var obj = {
+                id: _user.id,
+                type: _user.type,
+                email: _user.email,
+                phone: _user.phone,
+                username: _user.username,
+                nickname: _user.nickname
+            };
+            var nowTime = Date.now();
+            // 生成token
+            const token = Token.newToken(JSON.stringify(obj), String(nowTime));
+            // 保存用户状态
+            var onlieStatus = redisKeys.onlieStatus();
+            await app.redisClient.hset(onlieStatus, obj.id, { status: 1 });
+            // 返回
+            if (data.type) {
+                // 保存token
+                var key = redisKeys.apiToken();
+                await app.redisClient.hset(key, token, { signature: nowTime, expTime: nowTime });
+                ctx.response.type='application/json';
+                ctx.response.body={
+                    success: true,
+                    access_token: token,
+                    data: obj
+                };
+            } else {
+                // 保存token
+                var key = redisKeys.webToken();
+                await app.redisClient.hset(key, token, { signature: nowTime, expTime: nowTime });            
+                ctx.cookies.set('token', token, { maxAge: 10000 });
+                ctx.redirect('/')
+            }
+        }else{
             ctx.response.type='application/json';
             ctx.response.body={
-                success: true,
-                access_token:token
-            };
-        } else {
-            // 保存token
-            var key = redisKeys.webToken();
-            await app.redisClient.hset(key, token, { signature: nowTime, expTime: nowTime });            
-            ctx.cookies.set('token', token, { maxAge: 10000 });
-            ctx.redirect('/')
+                success: false,
+                "error": "password error"
+            }
         }
-    }else{
-        ctx.response.type='application/json';
-        ctx.response.body={
+    } catch (e) {
+        ctx.response.type = 'application/json';
+        ctx.response.body = {
             success: false,
-            "error": "password error"
+            "error": "error"
         }
     }
 }
@@ -255,7 +265,8 @@ exports.offline = async (ctx) => {
  */
 exports.checkAuth = async (ctx) => {
     const data = ctx.request.body || {};
-    ctx.body = {};
+    ctx.body = {}; 
+    logger.logInfo(process.pid)
     try {
         for (let key in data) {
             let user  = null;

@@ -37,7 +37,6 @@
   body{
     -webkit-app-region: no-drag;
     padding: 1px;
-    background: #FFF;
     height: 100vh;
     width: 100vw;
   }
@@ -45,6 +44,7 @@
     width: 100%;
     height: 100%;
     background: #fff;
+    border-radius: 5px;
   }
   .header{
     padding: 0;

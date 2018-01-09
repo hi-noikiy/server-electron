@@ -41,9 +41,10 @@ export default {
     position: absolute;
     width: 100%;
     z-index: 10;
-        top: 0;
     text-align: right;
     -webkit-app-region: drag;
+        top: 8px;
+    padding-right: 8px;
   }
   .ex_btn{
     cursor: pointer;

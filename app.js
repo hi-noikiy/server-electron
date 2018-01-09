@@ -36,6 +36,15 @@ const redisClient = new Redis({ url: configs.redis.host + configs.redis.port, op
 redisClient.connect();
 global.app.redisClient = redisClient;
 
+// 设置允许跨域
+app.use(async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', ctx.headers.origin); // 
+  ctx.set('Access-Control-Allow-Headers', 'content-type');
+  ctx.set('Access-Control-Allow-Methods', 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH')
+  await next();
+});
+
+
 // 最后挂载路由到app
 app.use(router.routes());
 app.use(router.allowedMethods())
