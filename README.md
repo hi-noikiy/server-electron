@@ -163,7 +163,7 @@ $ apidoc -i servers/controllers -o apidoc/
 
 #### 文件目录结构 client文件
 
-```
+`````
 ├── client
 │   └── src
 |        ├── main
@@ -180,10 +180,10 @@ $ apidoc -i servers/controllers -o apidoc/
 |        └── ipcCfg.js
 ├── README.md
 └── package.json
-```
+`````
 #### 开发环境启动
-```
+`````
 $ npm i
 $ npm run dev
-```
+`````
 #### 主进程与渲染进程通讯
