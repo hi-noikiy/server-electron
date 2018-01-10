@@ -16,7 +16,8 @@ winCfg = {
         resizable: false,
         transparent: true,
         icon: image,
-        dev:false
+        dev: false,
+        name:'loginOptions'
     },
     indexOptions:{
         width: 900,
@@ -27,7 +28,8 @@ winCfg = {
         resizable: true,
         transparent: true,
         icon: image,
-        dev:false
+        dev: false,
+        name:'indexOptions'
     }
 }
 

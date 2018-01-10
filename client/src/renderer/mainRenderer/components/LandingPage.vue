@@ -14,10 +14,9 @@
 <script>
   import headerBtn from './headerBtn'
   import pHead from './phead'
-  import pAside from './pAside'
   export default {
     name: 'landing-page',
-    components: {headerBtn,pHead,pAside},
+    components: {headerBtn,pHead},
     methods: {
      
     }

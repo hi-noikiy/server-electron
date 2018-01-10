@@ -45,8 +45,8 @@
     data(){
       return{
         titie:'管理系统',
-        password:'',
-        account:'zhengchong',
+        password:'3444',
+        account:'zhengchong1',
         autoLogin:false,
         remPw:false,
         isLogin:false,
@@ -78,8 +78,10 @@
              this.$electron.ipcRenderer.send(this.$_IPC.LOGIN, {
                user:data.data.data,
                access_token:data.data.access_token,
-               autoLogin:this.autoLogin,
-               remPw:this.remPw
+               loginSetting:{
+                 autoLogin:this.autoLogin,
+                 remPw:this.remPw
+               }
              });
              this.$electron.ipcRenderer.once(this.$_IPC.LOGIN,(event,arg)=>{
                if(arg && arg.success){

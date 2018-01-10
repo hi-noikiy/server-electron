@@ -8,12 +8,15 @@ import api from './../../apiUrl';
 
 const indexOptions= winConfigs.indexOptions;
 const winURL = FilesUrl.index;
+// const Store = require('./../store/store');
+import Store from './../store/store';
+import { setTimeout } from 'timers';
+const store = Store()
 
 
 // 接收登陆
 ipcMain.on(IPCLOGIN.LOGIN, (event, arg) => {
-    
-    win(winURL, indexOptions);
-    console.log(arg)
-    event.sender.send(IPCLOGIN.LOGIN, {success:true})
+    const _mainRender = win(winURL, indexOptions);
+    store.setState(arg);
+    event.sender.send(IPCLOGIN.LOGIN, { success: true });
 })

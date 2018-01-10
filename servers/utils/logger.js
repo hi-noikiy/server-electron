@@ -63,7 +63,7 @@ var formatRes = function (ctx, resTime) {
     return logText;
 }
 
-//格式化错误日志
+// 格式化错误日志
 var formatError = function (ctx, err, resTime) {
     var logText = new String();
 
@@ -86,7 +86,7 @@ var formatError = function (ctx, err, resTime) {
     return logText;
 };
 
-//格式化请求日志
+// 格式化请求日志
 var formatReqLog = function (req, resTime) {
 
     var logText = new String();
