@@ -8,8 +8,8 @@ const iconPath = path.join(__dirname + '/logo.png')
 var image = nativeImage.createFromPath(iconPath);
 winCfg = {
     loginOptions:{
-        width: 460,
-        height: 380,
+        width: 540,
+        height: 260,
         frame: false,
         minWidth: 460,
         // alwaysOnTop: true,

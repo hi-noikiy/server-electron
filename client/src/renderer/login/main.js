@@ -8,10 +8,10 @@ import Api from './../../apiUrl'
 
 console.log(IPC.LOGINIPC)
 
-import ElementUI from 'element-ui'
-import './../../../node_modules/element-ui/lib/theme-chalk/index.css'
+// import ElementUI from 'element-ui'
+// import './../../../node_modules/element-ui/lib/theme-chalk/index.css'
 
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 
 // Vue.http = Vue.prototype.$http = axios

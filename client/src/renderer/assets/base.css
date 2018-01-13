@@ -4,4 +4,5 @@
 body { 
   -webkit-app-region:drag;
   overflow: hidden;
+  font-family: 'Microsoft YaHei';
 }

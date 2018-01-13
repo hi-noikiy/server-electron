@@ -1,38 +1,42 @@
 <template>
   <div id="wrapper">
-      <div class="login-header-btn">
-        <el-row>
-          <el-col :span="4" :offset="21" class="no-drag">  
-            <i @click='openDev' class="el-icon-edit ex_btn"></i>
-            <i @click="changeView($event,'min')" class="el-icon-minus ex_btn"></i>
-            <i @click="changeView($event,'close')" class="el-icon-close ex_btn"></i>
-          </el-col>
-        </el-row>
-      </div>
-      <el-row class="login-header"> 
-         <el-col :span="24">
-           <h1  v-text="titie"></h1>
-        </el-col>
-      </el-row>
-        <el-container class="login-container no-drag">
-          <el-aside width="220px" v-bind:class="{ 'login-sub-tran': isLogin }">
-            <div class="login-logo" >
-              <img src="./../assets/001.jpg" alt="">
+      <div class="login">
+        <div class="login-header-btn">
+          <div>
+            <p class="no-drag">  
+              <i @click="changeView($event,'close')" class="el-icon-close ex_btn"></i>
+            </p>
+          </div>
+        </div>
+        <div class="loginLeft">
+          
+        </div>
+        <div class="loginRight">
+          <div class="loginTop">
+            <span>{{title}} |</span>
+            <span>{{desc}}</span>
+          </div>
+          <div class="no-drag loginIn">
+            <div class="input-group userName">
+              <span></span>
+              <input type="text" class="form-control" placeholder="用户"  @change='change'  v-model="userAccount" aria-describedby="basic-addon1">
             </div>
-          </el-aside>
-          <login-from 
-              @userChange='userChange' 
-              :password='password' 
-              :account='account' 
-              :autoLogin='autoLogin' 
-              :remPw='remPw' 
-              :clickSub='clickSub'
-              :isLogin='isLogin'
-              ></login-from>
-        </el-container>
-        <el-container class="login-container no-drag password-error"  v-bind:class="{ 'login-error': isPwTrue }">
-          password error
-        </el-container>
+            <div class="input-group passWord">
+              <span></span>
+              <input type="password" class="form-control" placeholder="密码"  @change='change'  v-model="userPassword" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="no-drag loginBottom">
+            <button class="btn btn-primary">登录</button>
+            <div class="btnFooter">
+              <input  v-model="userRemPw" type="checkbox" name="">
+              <span>记住密码</span>
+              <input  v-model="userAutoLogin" type="checkbox" name="">
+              <span>自动登陆</span>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 <script>
@@ -45,7 +49,8 @@
     components: {loginFrom},
     data(){
       return{
-        titie:'管理系统',
+        title:'管理系统',
+        desc:'XX培训 | 教育机构管理系统',
         password:'3444',
         account:'zhengchong1',
         autoLogin:false,
@@ -130,64 +135,136 @@
   }
 
   #wrapper {
-    background:rgba(255, 255, 255, 1) ;
     height: 100vh;
     width: 100vw;
     border-radius: 5px;
     overflow: hidden;
   }
-  .login-header-btn{
-    position: absolute;
-    width: 100%;
-    padding: 10px;
-    z-index: 10;
-  }
-  .ex_btn{
-    cursor: pointer;
-  }
-  .login-header{
-    height:50vh;
-    background: url('./../assets/head.jpg') left top;
-    background-size: 460px 190px;
-  }
-  .login-header h1{
-    text-align: center;
-    padding: 50px 0;
-  }
-  .login-container{
-    height: 50vh;
-    background: #c6f2fd;
-  }
-  .login-logo-container{
-    height: 100%;
-  }
-  .login-container aside{
-    position: relative;
-  }
-  .login-logo{
-    width: 100px;
-    overflow: hidden;
-    border-radius: 108px;
-    height: 100px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-  }
-  .login-logo img{
-    width: 100%;
-  }
-  .login-sub-tran{
-    transform: translate3D(162px,-32PX,0);
-    transition: 1s;
-  }
-  .password-error{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  .login-error{
-    display: none;
-  }
+  a{color: #000;}
+	 .login{
+			width: 530px;
+			margin: 5px auto;
+			height: 250px;
+			position: relative;
+      /*border: 1px solid #CCC;*/
+      background: #FFF;
+			border-radius: 2px;
+			box-shadow: 0 0 8px 1px rgba(7, 25, 37, 0.5);
+    }
+    .login-header-btn{
+      width: 100%;
+      height: 28px;
+      padding: 4px;
+      position: absolute;
+      z-index: 1999;
+    }
+    .login-header-btn p{
+      width: 100%;
+      height: 20px;
+      text-align: right;
+    }
+    .login-header-btn p i{
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: red;
+      cursor: pointer;
+    }
+    .login-header-btn p i.el-icon-close{
+      background: url('./../assets/img/icon/checkCloseHover.png') left top no-repeat!important;      
+    }
+		.login .loginLeft{
+			width: 165px;
+			height: 250px;
+			background: url('./../assets/loginbg.png') left top no-repeat!important;
+			overflow: hidden;
+		}
+		.login .loginRight{
+			height: 250px;
+			width: 364px;
+			position: absolute;
+			right: 0;
+			top:0;
+			padding: 20px 40px 30px 40px;
+			box-sizing: border-box;
+		}
+		.login .loginRight .loginTop{
+			margin-bottom: 18px;
+		    color: #2B5A93;
+		    position: relative;
+		}
+		.loginRight .loginTop span:first-child{
+			font-size: 18px;
+			padding: 2px 30px 2px 0;
+			background: url('./../assets/img/icon/icon-1.png') right 2px no-repeat!important;
+		}
+		.loginRight .loginTop span:last-child{
+			font-size: 12px;
+			display: inline-block;
+			height: 22px;
+			line-height: 22px;
+			position: absolute;
+			/*letter-spacing:1px;*/
+      transform: scale(.9,.9);
+      overflow: hidden;
+		}
+		.login .loginRight .loginIn{
+			margin-bottom: 22px;
+		}
+		.login .loginRight .loginIn>div {
+			margin-bottom: 18px;
+    	width: 284px;
+    	border: 1px #8CABD1 solid;
+			border-radius: 4px;
+			position: relative;
+		}
+		.login .loginRight .loginIn input{
+			height: 40px;
+    	border: 0;
+    	padding-left: 40px;
+    	outline: none;
+    	border-radius: 4px;
+			background: #E4EFF7;
+			width: 282px;
+		}
+		.loginRight .loginIn input::-webkit-input-placeholder { color:#8CABD1; font-size: 12px;}
+		.loginIn span{
+			width: 18px;
+			height: 14px;
+			display: inline-block;
+			position: absolute;
+			z-index: 99;
+			top: 15px;
+			left: 6px;
+		}
+		.loginIn .userName span{
+			background: url('./../assets/img/icon/userName.png') right top no-repeat!important;
+		}
+		.loginIn .passWord span{
+			background: url('./../assets/img/icon/userName.png') right top no-repeat!important;
+		}
+		.loginBottom{
+			font-size: 12px;
+		}
+		.loginBottom .btnFooter{
+			display: inline-block;
+			vertical-align: middle;
+			color: #58595B;
+			position: relative;
+		}
+		.loginBottom button{
+			width: 96px;
+			height: 32px;
+			background-color:#1c569b;
+			border: 0;
+			color: #FFF;
+		}
+		.loginBottom input{
+			margin-left: 12px;
+			vertical-align: sub;
+		}
+		.loginBottom .btnFooter a{
+			color: #58595B;
+			margin-left:20px;
+		}
 </style>
