@@ -172,7 +172,7 @@ $ apidoc -i servers/controllers -o apidoc/
 
 #### 主功能系统区
 
-<img src='./views/TIM截图20180114011918.png' width=1587 height=1037 />
+<img src='./views/TIM截图20180114011918.png' width=1587 height=600 />
 * nodb 做本地数据库 
 
 * vue-electron vue集成electron 脚手架
