@@ -167,7 +167,7 @@ $ apidoc -i servers/controllers -o apidoc/
 
 #### 文件目录结构 client文件
 
-<img src='./views/TIM截图20180113101437.png' width=400 height=300 />
+<img src='./views/TIM截图20180113101437.png' width=580 height=302 />
 
 `````
 ├── client
