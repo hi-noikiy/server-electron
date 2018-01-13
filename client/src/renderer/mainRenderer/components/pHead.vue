@@ -7,6 +7,7 @@
         mode="horizontal"
         @select="handleSelect">
         <el-menu-item index="index">首页</el-menu-item>
+        <el-menu-item index="room">琴房管理</el-menu-item>
         <el-menu-item index="subject">课程管理</el-menu-item>
         <el-menu-item index="teacher">教师管理</el-menu-item>
         <el-menu-item index="student">学生管理</el-menu-item>
@@ -31,6 +32,10 @@ export default {
 <style>
 .title{
   text-align: center;
+}
+.head-amount{
+  height: 90px;
+  padding: 0 20px;
 }
 .el-menu-header li{
   -webkit-app-region: no-drag;

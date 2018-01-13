@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <el-container class="el-container">
-      <el-header class="header" height='110px'>
+      <el-header class="header" height='120px'>
         <header-btn></header-btn> 
         <p-head></p-head>
       </el-header>
@@ -35,15 +35,17 @@
   }
   body{
     -webkit-app-region: no-drag;
-    padding: 1px;
+    padding: 5px;
     height: 100vh;
     width: 100vw;
   }
   #wrapper {
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #FFF;
     border-radius: 5px;
+    border: 1px solid #eae6e6;
+    box-shadow: 1px 1px 8px 0px #f1ecec;
   }
   .header{
     padding: 0;
@@ -57,5 +59,8 @@
   .container{
     height: 100%;
     width: 100%;
+  }
+  .container{
+    padding: 10px;
   }
 </style>

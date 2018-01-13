@@ -20,8 +20,8 @@ winCfg = {
         name:'loginOptions'
     },
     indexOptions:{
-        width: 900,
-        height: 680,
+        width: 1600,
+        height: 1024,
         minWidth: 660,
         frame: false,
         minHeight:660,

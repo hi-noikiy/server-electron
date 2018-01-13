@@ -13,7 +13,6 @@ import Store from './../store/store';
 import { setTimeout } from 'timers';
 const store = Store()
 
-
 // 接收登陆
 ipcMain.on(IPCLOGIN.LOGIN, (event, arg) => {
     const _mainRender = win(winURL, indexOptions);

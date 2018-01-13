@@ -17,6 +17,10 @@ export default new Router({
           component:require('@/components/index/IndexPage').default
         },
         {
+          path: 'room',
+          component: require('@/components/index/RoomPage').default
+        },
+        {
           path:'subject',
           component:require('@/components/index/SubjectPage').default
         },

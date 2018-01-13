@@ -39,6 +39,7 @@
   import '../../assets/base.css'
   import loginFrom from './loginFrom'
   import axios from 'axios'
+  import md5 from 'js-md5'
   export default {
     name: 'login',
     components: {loginFrom},
@@ -70,7 +71,7 @@
               url: url,
               data: {
                 username:this.account,
-                password:this.password,
+                password:this.password,  //md5(this.password),
                 type:1
               }
          }).then(data=>{
