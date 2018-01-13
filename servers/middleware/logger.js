@@ -14,7 +14,6 @@ module.exports = async (ctx, next) => {
         logUtil.logResponse(ctx, ms);
 
     } catch (error) {
-
         ms = new Date() - start;
         //记录异常日志
         logUtil.logError(ctx, error, ms);

@@ -2,10 +2,9 @@ import Vue from 'vue'
 import axios from 'axios'
 
 import App from './App'
-import router from './router'
+// import router from './router'
 import store from './store'
 import IPC from './../../ipcCfg'
-
 import ElementUI from 'element-ui'
 import './../../../node_modules/element-ui/lib/theme-chalk/index.css'
 // console.log(dirname)
@@ -21,7 +20,7 @@ Vue.prototype.$_IPC = IPC.INDEXIPC;
 /* eslint-disable no-new */
 new Vue({
   components: { App },
-  router,
+  // router,
   store,
   template: '<App/>'
 }).$mount('#app')

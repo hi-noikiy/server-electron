@@ -10,7 +10,7 @@ const consoleLogger = log4js.getLogger('default');
 // 封装错误日志
 logUtil.logError = function (ctx, error, resTime) {
     if (ctx && error) {
-        errorLogger.error(formatError(ctx, error, resTime));
+        errorLogger.log(formatError(ctx, error, resTime));
     }
 };
 
@@ -25,6 +25,12 @@ logUtil.logResponse = function (ctx, resTime) {
 logUtil.log = function (info) {
     if (info) {
         consoleLogger.info(formatInfo(info));
+    }
+};
+// 封装打印日志
+logUtil.error = function (info) {
+    if (info) {
+        errorLogger.info(formatInfo(info));
     }
 };
 

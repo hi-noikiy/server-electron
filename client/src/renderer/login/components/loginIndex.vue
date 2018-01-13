@@ -19,19 +19,19 @@
           <div class="no-drag loginIn">
             <div class="input-group userName">
               <span></span>
-              <input type="text" class="form-control" placeholder="用户"  @change='change'  v-model="userAccount" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" placeholder="用户"  @change='userChange'  v-model="account" aria-describedby="basic-addon1">
             </div>
             <div class="input-group passWord">
               <span></span>
-              <input type="password" class="form-control" placeholder="密码"  @change='change'  v-model="userPassword" aria-describedby="basic-addon1">
+              <input type="password" class="form-control" placeholder="密码"  @change='userChange'  v-model="password" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="no-drag loginBottom">
-            <button class="btn btn-primary">登录</button>
+            <button class="btn btn-primary" @click="clickSub">登录</button>
             <div class="btnFooter">
-              <input  v-model="userRemPw" type="checkbox" name="">
+              <input  v-model="remPw" type="checkbox" name="">
               <span>记住密码</span>
-              <input  v-model="userAutoLogin" type="checkbox" name="">
+              <input  v-model="autoLogin" type="checkbox" name="">
               <span>自动登陆</span>
             </div>
           </div>
@@ -49,10 +49,10 @@
     components: {loginFrom},
     data(){
       return{
-        title:'管理系统',
-        desc:'XX培训 | 教育机构管理系统',
-        password:'3444',
-        account:'zhengchong1',
+        title:'琴行管理系统',
+        desc:'XX琴行 | 教育机构管理系统',
+        password:'123',
+        account:'zc',
         autoLogin:false,
         remPw:false,
         isLogin:false,
@@ -152,8 +152,9 @@
 			box-shadow: 0 0 8px 1px rgba(7, 25, 37, 0.5);
     }
     .login-header-btn{
-      width: 100%;
       height: 28px;
+      right: 5px;
+      top: 5px;
       padding: 4px;
       position: absolute;
       z-index: 1999;

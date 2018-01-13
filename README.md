@@ -1,4 +1,12 @@
 # server-electron
+##### 这个项目由于女朋友是个钢琴专业教育工作者，明年打算开个琴行，做为程序员的男朋友总感觉要为她做点什么。当然除了资金上的支持之外，在自己能力上还能干点什么，那就是做个系统出来
+##### 这个系统主要分三个部分：
+##### 一、接入琴行微信公众号，
+##### 二、琴行的web官网主页、
+##### 三、琴行内部管理系统（桌面应用）
+##### 四、待以上弄完之后，后面也许会接入手机app等
+
+## 服务端
 
 * redis 做缓存 
 
@@ -10,7 +18,6 @@
 
 *  weixin 等第三方接入
 
-## 服务端
 #### 文件目录结构
 
 ```
@@ -159,6 +166,13 @@ $ apidoc -i servers/controllers -o apidoc/
 
 ## pc桌面应用
 
+#### 登陆框
+
+<img src='./views/TIM截图20180113101437.png' width=580 height=302 />
+
+#### 主功能系统区
+
+<img src='./views/TIM截图20180114011918.png' width=1587 height=1037 />
 * nodb 做本地数据库 
 
 * vue-electron vue集成electron 脚手架
@@ -166,8 +180,6 @@ $ apidoc -i servers/controllers -o apidoc/
 * element-ui 前端ui库
 
 #### 文件目录结构 client文件
-
-<img src='./views/TIM截图20180113101437.png' width=580 height=302 />
 
 `````
 ├── client

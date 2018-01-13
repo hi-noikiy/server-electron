@@ -176,6 +176,7 @@ exports.signup = async (ctx)=>{
             ctx.redirect('/')
         }
     } catch (e) {
+        logger.log(e)
         ctx.body = {
             success:false,
             message:e.errmsg ||'',
