@@ -27,6 +27,9 @@ class Store{
             }
         }
     }
+    getState(str) {
+        return this.store[str]
+    }
 }
 
 export default store;

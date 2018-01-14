@@ -1,3 +1,24 @@
+
+/***********
+* 重置样式
+*************/
+body{font-family:"Microsoft YaHei";}
+*{padding:0;margin:0;}
+li{list-style: none;}
+ul{margin:0;}
+a:hover{text-decoration: none;}
+table{border-collapse: separate;}
+th{font-weight: normal;font-size: 12px;}
+input{border:0;outline: none;}
+p{margin:0; padding:0;}
+.box{
+	width: 1420px;
+	margin: 0 auto;
+}
+
+/***********
+*
+************/
 .no-drag{
     -webkit-app-region:no-drag;
 }
@@ -15,20 +36,4 @@ div{
 }
 #app{
   height: 100%;
-}
-/***********
-* 重置样式
-*************/
-body{font-family:"Microsoft YaHei";}
-*{padding:0;margin:0;}
-li{list-style: none;}
-ul{margin:0;}
-a:hover{text-decoration: none;}
-table{border-collapse: separate;}
-th{font-weight: normal;font-size: 12px;}
-input{border:0;outline: none;}
-p{margin:0; padding:0;}
-.box{
-	width: 1420px;
-	margin: 0 auto;
 }

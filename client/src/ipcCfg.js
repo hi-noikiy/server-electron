@@ -7,6 +7,7 @@ module.exports = {
         MINIMIZE:'MINIMIZE'
     },
     INDEXIPC:{
-        CLOSE:'CLOSE'
+        CLOSE: 'CLOSE',
+        GETUSERINFO:'GETUSERINFO'
     }
 }

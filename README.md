@@ -67,6 +67,7 @@
 ```
 #### 开发环境启动
 ```
+$ cd client
 $ npm i
 $ npm run dev
 ```

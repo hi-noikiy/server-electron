@@ -22,7 +22,7 @@ winCfg = {
     indexOptions:{
         width: 1600,
         height: 1024,
-        minWidth: 660,
+        minWidth: 1024,
         frame: false,
         minHeight:660,
         resizable: true,

@@ -1,5 +1,6 @@
 const state = {
-  main: 0
+  main: 0,
+  userInfo: ''
 }
 
 const mutations = {
@@ -8,12 +9,17 @@ const mutations = {
   },
   INCREMENT_MAIN_COUNTER (state) {
     state.main++
+  },
+  // 启动获取用户信息
+  GET_USER_INFO(state) {
+    var userInfo = this.$electron.ipcRenderer.sendSync(this.$IPC.GETUSERINFO);
+    state.userInfo = userInfo.user;
+    state.access_token = userInfo.access_token;
   }
 }
 
 const actions = {
   someAsyncTask ({ commit }) {
-    // do something async
     commit('INCREMENT_MAIN_COUNTER')
   }
 }

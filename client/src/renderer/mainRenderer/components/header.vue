@@ -4,12 +4,12 @@
 				<span class="titleIcon">
 					<img src="./../assets/img/icon/img.png" />
 				</span>
-				<span class="titleBar">{{name}}</span>
+				<span class="titleBar">你好!{{name}}</span>
 			</div>
             <div class="no-drag btn">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span @click="changeView($event,'min')"></span>
+                <span @click="changeView($event,'max')"></span>
+                <span @click='close'></span>
             </div>
 		</div>
 </template>
@@ -18,10 +18,34 @@
     export default {
         data(){
             return{
-                name:'你好! xx老师'
+                name:'',
+                isMax:false
             }
+        },
+        methods:{
+            close(){
+                this.win.close();
+            },
+            changeView(ev,msg){
+                if(msg=='min'){
+                    this.win.minimize();
+                }else{
+                    // 这里不知道是使用姿势不对还是electron的bug  无法正确判断窗口是否最大化
+                    // console.log(this.win.isMaximized())
+                    if(this.isMax){
+                        this.win.unmaximize();
+                    }else{
+                        this.win.maximize();
+                    }
+                    this.isMax = !this.isMax;
+                }
+            }
+        },
+        mounted(){
+            this.name = this.$store.state.Counter.userInfo.username;
+            console.log(this.name)
+            this.win = this.$electron.remote.getCurrentWindow();
         }
-        
     }
 </script>
 
@@ -73,7 +97,7 @@
     background:url('./../assets/img/icon/restore.png') center center no-repeat;
 }
 .btn span:nth-child(3){
-    background:url('./../assets/img/icon/checkClose.png') center center no-repeat;
-   
+    background:url('./../assets/img/icon/close.png') center center no-repeat;
+    background-color: red;
 }
 </style>

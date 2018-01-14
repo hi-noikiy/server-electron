@@ -15,6 +15,9 @@
   export default {
     name: 'project',
     components: {headerContent,contentContent,footerContent},
+    mounted(){
+      this.$store.commit('GET_USER_INFO');
+    }
   }
 </script>
 
