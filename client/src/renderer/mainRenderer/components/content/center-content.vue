@@ -66,11 +66,11 @@
 
 <script>
     export default {
-        data(){
-            return{
-                title:'title'
-            }
+      data () {
+        return {
+          title: 'title'
         }
+      }
     }
 </script>
 <style scoped>

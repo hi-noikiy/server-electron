@@ -11,7 +11,8 @@
   },
   "scripts": {
     "dev": "node app.js",
-    "start": "pm2 start bin/pm2.json"
+    "start": "pm2 start bin/pm2.json",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -29,5 +30,10 @@
     "redis": "^2.8.0",
     "uuid": "^3.1.0",
     "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "mocha": "^4.1.0",
+    "should": "^13.2.1",
+    "supertest": "^3.0.0"
   }
 }

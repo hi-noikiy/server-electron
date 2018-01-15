@@ -20,7 +20,7 @@ Vue.http = Vue.prototype.$api = Api
 Vue.config.productionTip = false
 
 // 引入通讯
-Vue.prototype.$_IPC = IPC.LOGINIPC;
+Vue.prototype.$_IPC = IPC.LOGINIPC
 
 /* eslint-disable no-new */
 new Vue({

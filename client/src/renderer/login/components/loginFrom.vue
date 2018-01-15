@@ -40,22 +40,22 @@
 <script>
 
 export default {
-  name:'loginFrom',
-  props:['account','password','clickSub','autoLogin','remPw','isLogin'],
-  data(){
-      return {
-           radio: '1',
-           userAccount:this.account,
-           userPassword:this.password,
-           userAutoLogin:this.autoLogin,
-           userRemPw:this.remPw
-      }
+  name: 'loginFrom',
+  props: ['account', 'password', 'clickSub', 'autoLogin', 'remPw', 'isLogin'],
+  data () {
+    return {
+      radio: '1',
+      userAccount: this.account,
+      userPassword: this.password,
+      userAutoLogin: this.autoLogin,
+      userRemPw: this.remPw
+    }
   },
-  methods:{
-      change(){
-        this.$emit('userChange',this.userAccount,this.userPassword,this.userRemPw,this.userAutoLogin)
-      }
-     
+  methods: {
+    change () {
+      this.$emit('userChange', this.userAccount, this.userPassword, this.userRemPw, this.userAutoLogin)
+    }
+
   }
 }
 </script>

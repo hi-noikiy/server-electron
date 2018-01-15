@@ -1,23 +1,21 @@
 <template>
- 
         <!-- 左边列表 -->
-			<div class="nav">
-				<ul>
-					<li class="oli"><span class="navIcon order"></span><a href="#">首页</a></li>
-					<li class="oli active"><span class="navIcon person"></span><a href="#">学生</a></li>
-					<li class="oli"><span class="navIcon charge"></span><a href="#">收费</a></li>
-					<li class="oli"><span class="navIcon statistical"></span><a href="#">统计</a></li>
-					<li class="oli"><span class="navIcon inventory"></span><a href="#">库存</a></li>
-					<li class="oli"><span class="navIcon setting"></span><a href="#">设置</a></li>
-				</ul>
-			</div>	
+	<div class="nav">
+		<ul>
+			<li class="oli active"><span class="navIcon order"></span><a href="#">首页</a></li>
+			<li class="oli"><span class="navIcon person"></span><a href="#">学生</a></li>
+			<li class="oli"><span class="navIcon charge"></span><a href="#">收费</a></li>
+			<li class="oli"><span class="navIcon statistical"></span><a href="#">统计</a></li>
+			<li class="oli"><span class="navIcon inventory"></span><a href="#">教师</a></li>
+			<li class="oli"><span class="navIcon setting"></span><a href="#">设置</a></li>
+		</ul>
+	</div>	
 </template>
 <script>
     export default {
-        data(){
-			return{
-				title:'管理系统',
-        		desc:'XX培训 | 教育机构管理系统',
+      	data () {
+			return {
+				
 			}
 		}
     }

@@ -3,23 +3,23 @@ const configs = require('./servers/configs/config');
 const koaBody = require('koa-body')
 const path = require('path');
 const serve = require('koa-static2');
-const app = new Koa();
+const App = new Koa();
 const router = require('./servers/routers');
 
 //log工具
 const logger = require('./servers/middleware/logger');
 // logger
-app.use(logger);
+App.use(logger);
 
 global.app = {};
 
-app.use(koaBody());
+App.use(koaBody());
 
-app.use(serve("static", __dirname + "/views"));
+App.use(serve("static", __dirname + "/views"));
 
 // 开发环境部署文档
 if (process.env.NODE_ENV != 'production') {
-  app.use(serve("static", __dirname + "/apidoc"));
+  App.use(serve("static", __dirname + "/apidoc"));
 }
 //  引入mongoose
 const MongoDb = require('./servers/utils/mongodbHelper');
@@ -37,7 +37,7 @@ redisClient.connect();
 global.app.redisClient = redisClient;
 
 // 设置允许跨域
-app.use(async (ctx, next) => {
+App.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', ctx.headers.origin); // 
   ctx.set('Access-Control-Allow-Headers', 'content-type');
   ctx.set('Access-Control-Allow-Methods', 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH')
@@ -46,11 +46,14 @@ app.use(async (ctx, next) => {
 
 
 // 最后挂载路由到app
-app.use(router.routes());
-app.use(router.allowedMethods())
+App.use(router.routes());
+App.use(router.allowedMethods())
 
 process.on('uncaughtException', function (e) {
   console.error('uncaughtException from process', e);
 });
 
-app.listen(configs.server.port)
+const server = App.listen(configs.server.port);
+
+
+module.exports = server;

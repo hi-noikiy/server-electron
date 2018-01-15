@@ -7,12 +7,12 @@
 <script>
   export default {
     name: 'project',
-    data(){
+    data () {
       return {
 
       }
     }
-   
+  
   }
 </script>
 

@@ -15,13 +15,13 @@
 
 <script>
     export default {
-        data(){
-			return{
-				title:'XX',
-                desc:'琴行管理系统',
-                ad:'嘻嘻嘻'
-			}
-		}
+      data () {
+    return {
+          title: 'XX',
+          desc: '琴行管理系统',
+          ad: '嘻嘻嘻'
+    }
+  }
     }
 </script>
 

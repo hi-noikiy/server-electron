@@ -4,7 +4,7 @@
 				<span class="titleIcon">
 					<img src="./../assets/img/icon/img.png" />
 				</span>
-				<span class="titleBar">你好!{{name}}</span>
+				<span class="titleBar">你好!  {{name}}</span>
 			</div>
             <div class="no-drag btn">
                 <span @click="changeView($event,'min')"></span>
@@ -13,39 +13,40 @@
             </div>
 		</div>
 </template>
-
 <script>
     export default {
-        data(){
-            return{
-                name:'',
-                isMax:false
-            }
-        },
-        methods:{
-            close(){
-                this.win.close();
-            },
-            changeView(ev,msg){
-                if(msg=='min'){
-                    this.win.minimize();
-                }else{
-                    // 这里不知道是使用姿势不对还是electron的bug  无法正确判断窗口是否最大化
-                    // console.log(this.win.isMaximized())
-                    if(this.isMax){
-                        this.win.unmaximize();
-                    }else{
-                        this.win.maximize();
-                    }
-                    this.isMax = !this.isMax;
-                }
-            }
-        },
-        mounted(){
-            this.name = this.$store.state.Counter.userInfo.username;
-            console.log(this.name)
-            this.win = this.$electron.remote.getCurrentWindow();
+      data () {
+        return {
+          isMax: false
         }
+      },
+      computed:{
+          name(){
+              return this.$store.state.Counter.userInfo.username;
+          }
+      },
+      methods: {
+        close () {
+          this.win.close()
+        },
+        changeView (ev, msg) {
+          if (msg == 'min') {
+            this.win.minimize()
+          } else {
+            // 这里不知道是使用姿势不对还是electron的bug  无法正确判断窗口是否最大化
+            // console.log(this.win.isMaximized())
+            if (this.isMax) {
+              this.win.unmaximize()
+            } else {
+              this.win.maximize()
+            }
+            this.isMax = !this.isMax
+          }
+        }
+      },
+      mounted () {
+        this.win = this.$electron.remote.getCurrentWindow()
+    }
     }
 </script>
 

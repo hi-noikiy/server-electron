@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <!-- <router-view></router-view> -->
     <header-content></header-content>
-    <content-content></content-content>
+    <router-view></router-view>
     <footer-content></footer-content>
   </div>
 </template>
@@ -10,13 +9,15 @@
 <script>
   // import './assets/css/style.css'
   import headerContent from './components/header'
-  import contentContent from './components/content/content'
   import footerContent from './components/footer'
   export default {
     name: 'project',
-    components: {headerContent,contentContent,footerContent},
-    mounted(){
-      this.$store.commit('GET_USER_INFO');
+    components: {
+      headerContent, 
+      footerContent
+    },
+    mounted () {
+      this.$store.dispatch('GET_USER_INFO')
     }
   }
 </script>

@@ -43,83 +43,82 @@
   export default {
     name: 'login',
     components: {loginFrom},
-    data(){
-      return{
-        titie:'管理系统',
-        password:'3444',
-        account:'zhengchong1',
-        autoLogin:false,
-        remPw:false,
-        isLogin:false,
-        isPwTrue:true,
-        win:null
+    data () {
+      return {
+        titie: '管理系统',
+        password: '3444',
+        account: 'zhengchong1',
+        autoLogin: false,
+        remPw: false,
+        isLogin: false,
+        isPwTrue: true,
+        win: null
       }
     },
     methods: {
-     clickSub(data){
-       var account = {
-         account:this.account,
-         password:this.password,
-         autoLogin:this.autoLogin,
-         remPw:this.remPw
-       }
-       this.isLogin = !this.isLogin;
-       if(this.isLogin){
-         var url = this.$api.url+this.$api.auth+this.$api.version+this.$api.router+'/login';
-         axios({
-              method: 'post',
-              url: url,
-              data: {
-                username:this.account,
-                password:this.password,  //md5(this.password),
-                type:1
-              }
-         }).then(data=>{
-           if(data.data && data.data.success ){
-             this.$electron.ipcRenderer.send(this.$_IPC.LOGIN, {
-               user:data.data.data,
-               access_token:data.data.access_token,
-               loginSetting:{
-                 autoLogin:this.autoLogin,
-                 remPw:this.remPw
-               }
-             });
-             this.$electron.ipcRenderer.once(this.$_IPC.LOGIN,(event,arg)=>{
-               if(arg && arg.success){
-                 this.win.close();
-               }else{
-                  this.isLogin = !this.isLogin;
-               }
-             })
+      clickSub (data) {
+        var account = {
+          account: this.account,
+          password: this.password,
+          autoLogin: this.autoLogin,
+          remPw: this.remPw
+        }
+        this.isLogin = !this.isLogin
+        if (this.isLogin) {
+          var url = this.$api.url + this.$api.auth + this.$api.version + this.$api.router + '/login'
+          axios({
+            method: 'post',
+            url: url,
+            data: {
+              username: this.account,
+              password: this.password, // md5(this.password),
+              type: 1
+            }
+          }).then(data => {
+            if (data.data && data.data.success) {
+              this.$electron.ipcRenderer.send(this.$_IPC.LOGIN, {
+                user: data.data.data,
+                access_token: data.data.access_token,
+                loginSetting: {
+                  autoLogin: this.autoLogin,
+                  remPw: this.remPw
+                }
+              })
+              this.$electron.ipcRenderer.once(this.$_IPC.LOGIN, (event, arg) => {
+                if (arg && arg.success) {
+                  this.win.close()
+                } else {
+                  this.isLogin = !this.isLogin
+                }
+              })
+            } else {
+              this.isLogin = !this.isLogin
+            }
+          }).catch(data => {
+            this.isLogin = !this.isLogin
+          })
+        }
+      },
 
-           }else{
-             this.isLogin = !this.isLogin;
-           }
-         }).catch(data=>{
-           this.isLogin = !this.isLogin;
-         });
-       }
-     },
+      userChange (account, password, autoLogin, remPw) {
+        this.account = account
+        this.password = password
+        this.autoLogin = autoLogin
+        this.remPw = remPw
+      },
 
-     userChange(account,password,autoLogin,remPw){
-       this.account =  account;
-       this.password =  password;
-       this.autoLogin =  autoLogin;
-       this.remPw =  remPw;
-     },
-
-     changeView(ev,msg){
-       msg=='min'  && this.win.minimize();
-       msg =='close' && this.win.close();
-     },
-     
-     openDev(){
-       console.log('aa')
-     }
+      changeView (ev, msg) {
+        msg == 'min' && this.win.minimize()
+        msg == 'close' && this.win.close()
+      },
+  
+      openDev () {
+        console.log('aa')
+      }
     },
-    mounted(){
-      this.win = this.$electron.remote.getCurrentWindow();
-    }
+    mounted () {
+      this.win = this.$electron.remote.getCurrentWindow()
+  }
   }
 </script>
 <style>
