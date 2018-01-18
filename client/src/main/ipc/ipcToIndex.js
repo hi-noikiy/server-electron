@@ -6,6 +6,7 @@ const store = Store()
 // 应用退出
 ipcMain.on(IPCINDEX.CLOSE, (event, msg) => {
   app.on('window-all-closed', () => {
+    
     if (process.platform !== 'darwin') {
       app.quit()
     }

@@ -2,12 +2,15 @@
         <!-- 左边列表 -->
 	<div class="nav">
 		<ul>
-			<li class="oli active"><span class="navIcon order"></span><a href="#">首页</a></li>
+			<li v-for="(relation,index) in relations" class="oli" v-bind:class="{active:nowId==relation.id}"  @click='changeView($event,relation)' >
+				<span class="navIcon"  v-bind:class="relation.id"></span><a href="#">{{relation.text}}</a>
+			</li>
+			<!-- <li class="oli active"><span class="navIcon order"></span><a href="#">首页</a></li>
 			<li class="oli"><span class="navIcon person"></span><a href="#">学生</a></li>
 			<li class="oli"><span class="navIcon charge"></span><a href="#">收费</a></li>
 			<li class="oli"><span class="navIcon statistical"></span><a href="#">统计</a></li>
 			<li class="oli"><span class="navIcon inventory"></span><a href="#">教师</a></li>
-			<li class="oli"><span class="navIcon setting"></span><a href="#">设置</a></li>
+			<li class="oli"><span class="navIcon setting"></span><a href="#">设置</a></li> -->
 		</ul>
 	</div>	
 </template>
@@ -15,8 +18,24 @@
     export default {
       	data () {
 			return {
-				
+				nowId:'order',
+				relations:[
+					{text:'首页',id:'order'},
+					{text:'学生',id:'person'},
+					{text:'收费',id:'charge'},
+					{text:'统计',id:'statistical'},
+					{text:'教师',id:'inventory'},
+					{text:'设置',id:'setting'},
+				]
 			}
+		},
+		methods:{
+			changeView(ev,relation){
+				this.nowId = relation.id; 
+			}
+		},
+		mounted(){
+			console.log('aa')
 		}
     }
 </script>

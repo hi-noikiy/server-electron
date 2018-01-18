@@ -28,8 +28,9 @@ new MongoDb(configs.mongodb).db().then(function(db){
   db = db;
 });
 
-//  引入redis
+//  引入redis mysql
 const Redis = require('./servers/utils/redisHelper');
+const mysql = require('./servers/utils/mysqlHelper');
 
 //建立一个reidis 实例 然后挂载到全局
 const redisClient = new Redis({ url: configs.redis.host + configs.redis.port, option: { db: 0 } });
