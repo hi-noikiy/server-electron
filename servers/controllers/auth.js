@@ -150,14 +150,16 @@ exports.signup = async (ctx)=>{
         // 检测邮箱密码用户名
         let { password, username, email, phone, type }  = data || '';
         data.password = cryptoHelper.SHA1(password);
-        const user = await User.save(data);
+        // const user = await User.save(data);
+        data.user_id = cryptoHelper.UUID();
+        const user = await User.sqlAddUser(data);
         let obj = {
-            user_id: user._id,
-            username: user.username,
-            email: user.email,
-            phone: user.phone,
-            auth: user.auth,
-            type: user.type
+            user_id: data.user_id,
+            username: data.username,
+            email: data.email,
+            phone: data.phone,
+            auth: data.auth,
+            type: data.type
         }
         if (type) {
             delete user.password;
@@ -179,7 +181,7 @@ exports.signup = async (ctx)=>{
         logger.log(e)
         ctx.body = {
             success:false,
-            message:e.errmsg ||'',
+            message:e ||'',
             code:4001
         };
     }

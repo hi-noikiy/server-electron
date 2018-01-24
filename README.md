@@ -10,7 +10,9 @@
 
 * redis 做缓存 
 
-* mongodb 做数据库
+* mysql 数据库
+
+* mongodb 数据库
 
 * log4js 做日志
 
@@ -161,6 +163,41 @@ $ apidoc -i servers/controllers -o apidoc/
                 message: 'void Auth'
             }
         }
+    }
+
+   ```
+
+#### 调用存储过程   
+   强业务关系的数据适合用关系型数据库，转为mysql存储，在代理模块直接调用存储过程 
+   数据转成xml格式传入存储过程的方法中
+   ```
+    var xml = `<Action action="10">
+                <data>
+                    <username>zhengc222eh111ong1</username>
+                    <password>641e2b8105b69fff4d2346d902ec6b0b07c01e51</password>
+                    <email>zw32321211c@qq.com</email>
+                    <nickname>z_cw232h232ong</nickname>
+                    <phone>132321214238110547311</phone>
+                    <type>1</type>
+                    <auth>0</auth>
+                    <user_id>dadd467281014a099cfce525450346e3</user_id>
+                </data>
+                </Action>`
+                
+    mysql.query(CALL sp_addUser(`${xml}`);
+
+    //proxy/user.js
+    exports.sqlAddUser = async (users) => {
+        var xml = sqlToXml({data:users})
+        return new Promise(function (resolve, reject) {
+            mysql.query(`CALL sp_addUser(${xml});`, function (err, docs) {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(docs)
+                }
+            })
+        })
     }
 
    ```

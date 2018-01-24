@@ -5,9 +5,9 @@ const auth = require('./auth');
 const api = require('./api');
 const page = require('./page');
 const wx = require('./wx');
-
+const configs = require('./../configs/config')
 // 加入版本号前缀
-_version([api,auth],'/v1.0/:router');
+_version([api, auth], '/'+configs.v+'/:router');
 
 // 转发路由
 // web page 路由
