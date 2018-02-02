@@ -51,7 +51,7 @@
       return {
         title: '琴行管理系统',
         desc: 'XX琴行 | 教育机构管理系统',
-        password: '123',
+        password: '1',
         account: 'zc',
         autoLogin: false,
         remPw: false,
@@ -68,9 +68,9 @@
           autoLogin: this.autoLogin,
           remPw: this.remPw
         }
-        this.isLogin = !this.isLogin
+        this.isLogin = !this.isLogin;
         if (this.isLogin) {
-          var url = this.$api.url + this.$api.auth + this.$api.version + this.$api.router + '/login'
+          var url = this.$api.url + this.$api.auth + this.$api.version + this.$api.router + '/login';
           axios({
             method: 'post',
             url: url,
@@ -100,6 +100,7 @@
               this.isLogin = !this.isLogin
             }
           }).catch(data => {
+            console.log(data)
             this.isLogin = !this.isLogin
           })
         }

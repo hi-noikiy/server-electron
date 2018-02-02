@@ -21,6 +21,7 @@ App.use(serve("static", __dirname + "/views"));
 if (process.env.NODE_ENV != 'production') {
   App.use(serve("static", __dirname + "/apidoc"));
 }
+
 //  引入mongoose
 const MongoDb = require('./servers/utils/mongodbHelper');
 const db = null;
@@ -39,7 +40,7 @@ global.app.redisClient = redisClient;
 
 // 设置允许跨域
 App.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', ctx.headers.origin); // 
+  ctx.set('Access-Control-Allow-Origin', ctx.headers.origin);
   ctx.set('Access-Control-Allow-Headers', 'content-type');
   ctx.set('Access-Control-Allow-Methods', 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH')
   await next();
@@ -55,6 +56,5 @@ process.on('uncaughtException', function (e) {
 });
 
 const server = App.listen(configs.server.port);
-
 
 module.exports = server;

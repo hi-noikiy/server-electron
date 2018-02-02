@@ -1,5 +1,3 @@
-
-
 const redis = require('redis');
 class RedisCache {
     constructor(options){
