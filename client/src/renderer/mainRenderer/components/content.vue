@@ -2,25 +2,21 @@
 			<!-- 中间内容 -->
 			<div class="no-drag content">
 				<left-content></left-content>	
-				<div>
-					<!-- 中间列表 -->
-					<center-content></center-content>	
-					<!-- 右边内容区 -->
-					<right-content></right-content>
+				<div style="height:100%;">
+					<router-view></router-view>
+					<router-view name="right"></router-view>
 				</div>
 			</div> 
 </template>
 <script>
-import leftContent from './content/left-content'
-import centerContent from './content/center-content'
-import rightContent from './content/right-content'
+import leftContent from './index/left-content'
 export default {
-	name:'content',
-   	components: {leftContent, centerContent, rightContent}
+  name: 'contents',
+   	components: {leftContent}
 }
 </script>
 
-<style scoped>
+<style>
 .content{
 	height: 100%;
 	width:100%;

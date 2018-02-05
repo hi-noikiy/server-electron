@@ -31,7 +31,7 @@ function _version(routers,url){
         console.error('the routers must be array');
         return false; 
     }
-    const _url = url || '/'
+    const _url = url || '/';
     routers.forEach(function(el){
         if( el instanceof Router ){
             el.prefix(_url)

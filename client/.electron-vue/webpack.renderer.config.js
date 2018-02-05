@@ -23,8 +23,8 @@ let whiteListedModules = ['vue']
 let rendererConfig = {
   devtool: '#cheap-module-eval-source-map',
   entry: {
-    renderer: path.join(__dirname, '../src/renderer/mainrenderer/main.js'),
-    login: path.join(__dirname, '../src/renderer/login/main.js')
+    login: path.join(__dirname, '../src/renderer/login/main.js'),
+    renderer: path.join(__dirname, '../src/renderer/mainRenderer/main.js')
   },
   externals: [
     ...Object.keys(dependencies || {}).filter(d => !whiteListedModules.includes(d))
@@ -80,7 +80,8 @@ let rendererConfig = {
         use: {
           loader: 'url-loader',
           query: {
-            limit: 10000
+            limit: 10000,
+            name: 'imgs/[name]--[folder].[ext]'
           }
         }
       },
@@ -113,7 +114,7 @@ let rendererConfig = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
-      chunks:['renderer'],
+      chunks: ['renderer'],
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
@@ -126,7 +127,7 @@ let rendererConfig = {
     new HtmlWebpackPlugin({
       filename: 'login.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
-      chunks:['login'],
+      chunks: ['login'],
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,

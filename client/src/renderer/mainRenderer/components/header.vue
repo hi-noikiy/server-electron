@@ -20,10 +20,10 @@
           isMax: false
         }
       },
-      computed:{
-          name(){
-              return this.$store.state.Counter.userInfo.username;
-          }
+      computed: {
+        name () {
+          return this.$store.state.Counter.userInfo.username
+        }
       },
       methods: {
         close () {
@@ -50,7 +50,7 @@
     }
 </script>
 
-<style scoped>
+<style>
 .header{
     position: absolute;
     width: 100%;

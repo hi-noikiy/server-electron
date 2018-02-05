@@ -6,11 +6,14 @@ import router from './router'
 import store from './store'
 import IPC from './../../ipcCfg'
 import ElementUI from 'element-ui'
-import './../../../node_modules/element-ui/lib/theme-chalk/index.css'
-// console.log(dirname)
+import 'element-ui/lib/theme-chalk/index.css'
+
+// import './../../../node_modules/element-ui/lib/theme-chalk/index.css'
+
 Vue.use(ElementUI)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
+
 Vue.http = Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

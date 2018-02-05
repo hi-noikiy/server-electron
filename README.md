@@ -250,3 +250,10 @@ $ npm run dev
 通讯有主动方式也有被动的方式，在electron 进程中主要的通讯还是ipc 主进程用ipcMain 渲染进程是ipcRenderer.
 在这里主要还是用ipc 发送/接收信号(channel)的方式进行，为了更好的统一管理信号，所有的信号都统一在ipcCfg.js注册，然后主进程中在ipc文件夹里面进行处理，
 在渲染进程中，如果有用到vuex的进程那么统一在store中作为发送接收处理通道。
+
+#### 应用打包
+```
+$ yarn run build  // 不要用npm 用npm 会报错
+
+```
+

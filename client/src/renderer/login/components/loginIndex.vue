@@ -4,7 +4,7 @@
         <div class="login-header-btn">
           <div>
             <p class="no-drag">  
-              <i @click="changeView($event,'close')" class="el-icon-close ex_btn"></i>
+              <i @click="changeView($event,'close')" class="el-icon-closes ex_btn"></i>
             </p>
           </div>
         </div>
@@ -43,7 +43,7 @@
   import '../../assets/base.css'
   import loginFrom from './loginFrom'
   import axios from 'axios'
-  import md5 from 'js-md5'
+  // import md5 from 'js-md5'
   export default {
     name: 'login',
     components: {loginFrom},
@@ -68,9 +68,9 @@
           autoLogin: this.autoLogin,
           remPw: this.remPw
         }
-        this.isLogin = !this.isLogin;
+        this.isLogin = !this.isLogin
         if (this.isLogin) {
-          var url = this.$api.url + this.$api.auth + this.$api.version + this.$api.router + '/login';
+          var url = this.$api.url + this.$api.auth + this.$api.version + this.$api.router + '/login'
           axios({
             method: 'post',
             url: url,
@@ -171,7 +171,7 @@
       background: red;
       cursor: pointer;
     }
-    .login-header-btn p i.el-icon-close{
+    .login-header-btn p i.el-icon-closes{
       background: url('./../assets/img/icon/checkCloseHover.png') left top no-repeat!important;      
     }
 		.login .loginLeft{

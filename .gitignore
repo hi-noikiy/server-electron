@@ -3,6 +3,9 @@
 /dist
 /client/node_modules
 /client/dist
+/client/.electron-vue
+/client/.vscode
+/client/build
 /.vscode
 .vscode/.vscode
 /apidoc
