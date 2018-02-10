@@ -30,7 +30,10 @@
 │   └── src
 ├── servers  // 服务端文件
 │   ├── configs
-│   │   ├── config.js // 基础配置文件
+│   │   ├── config.default.js // 开发环境基础配置文件
+│   │   ├── config.prod.js // 生成环境配置文件
+│   │   ├── index.js // 配置文件
+│   │   ├── losgConfig.js // log配置文件
 │   │   └── redisKeys.js  // redis key 之统一管理
 │   ├── controller
 │   │   ├── auth.js
@@ -73,7 +76,13 @@ $ cd client
 $ npm i
 $ npm run dev
 ```
-#### pm2启动
+
+#### 测试
+```
+$ npm run test
+```
+#### 部署生成环境 pm2启动
+config.prod.js 配置会替换开发环境配置
 ```
 $ npm i
 $ npm run start
@@ -168,9 +177,11 @@ $ apidoc -i servers/controllers -o apidoc/
    ```
 
 #### 调用存储过程   
-   强业务关系的数据适合用关系型数据库，转为mysql存储，在代理模块直接调用存储过程 
+   在代理模块直接调用存储过程 
    数据转成xml格式传入存储过程的方法中
    ```
+
+    // 调用示例
     var xml = `<Action action="10">
                 <data>
                     <username>zhengc222eh111ong1</username>
@@ -183,7 +194,6 @@ $ apidoc -i servers/controllers -o apidoc/
                     <user_id>dadd467281014a099cfce525450346e3</user_id>
                 </data>
                 </Action>`
-                
     mysql.query(CALL sp_addUser(`${xml}`);
 
     //proxy/user.js
@@ -217,6 +227,10 @@ $ apidoc -i servers/controllers -o apidoc/
 * vue-electron vue集成electron 脚手架
 
 * element-ui 前端ui库
+
+* vuex 状态管理
+
+* vue-router 路由管理
 
 #### 文件目录结构 client文件
 

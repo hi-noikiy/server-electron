@@ -5,7 +5,7 @@ const auth = require('./auth');
 const api = require('./api');
 const page = require('./page');
 const wx = require('./wx');
-const configs = require('./../configs/config')
+const configs = require('./../configs')
 // 加入版本号前缀
 _version([api, auth], '/'+configs.v+'/:router');
 

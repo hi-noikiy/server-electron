@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const configs = require('./servers/configs/config');
+const configs = require('./servers/configs');
 const koaBody = require('koa-body')
 const path = require('path');
 const serve = require('koa-static2');
@@ -18,11 +18,11 @@ App.use(koaBody());
 App.use(serve("static", __dirname + "/views"));
 
 // 开发环境部署文档
-if (process.env.NODE_ENV != 'production') {
+if (process.env.NODE_ENV !== 'production') {
   App.use(serve("static", __dirname + "/apidoc"));
 }
 
-//  引入mongoose
+//  加载mongoose
 const MongoDb = require('./servers/utils/mongodbHelper');
 const db = null;
 new MongoDb(configs.mongodb).db().then(function(db){

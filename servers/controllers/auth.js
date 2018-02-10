@@ -126,19 +126,22 @@ exports.signup = async (ctx)=>{
     const data = ctx.request.body;
     try {
         // 检测邮箱密码用户名
-        let { password, username, email, phone, type }  = data || '';
+        let { password } = data || '';
         data.password = cryptoHelper.SHA1(password);
         data.user_id = cryptoHelper.UUID();
+        data.auth = data.auth || 0;
         const user = await User.sqlAddUser(data);
-        delete user.password;
+        delete data.password;
         let userAuth = new UserAuth(data);
-        if (type) {
+        userAuth.saveStatus()
+        if (data.type) {
             ctx.response.body = {
                 success:true,
-                data: userAuth.user
+                data: userAuth.user,
+                access_token: userAuth.token
             };
         } else {
-            // 重定向到主页
+             // 重定向到主页
             ctx.cookies.set('token', userAuth.token, { maxAge: 10000 })
             ctx.redirect('/');
         }
@@ -146,7 +149,7 @@ exports.signup = async (ctx)=>{
         ctx.body = {
             success:false,
             message:e ||'',
-            code:4001
+            code:4002
         };
     }
 }

@@ -1,5 +1,5 @@
+
 var app = require('./../app');
-// console.log(app)
 var request = require('supertest')(app);
 var should = require("should"); 
 
@@ -14,7 +14,7 @@ describe('auth/login', function () {
             .send(user)
             .expect(200, function (err, res) {
                 should.not.exist(err);
-                res.body.should.have.property('success', true);
+                res.body.should.have.property('success', false);
                 done();
             });
     });
@@ -42,18 +42,20 @@ describe('auth/login', function () {
 
 describe('auth/signup', function () {
     var user = {
-        "username": "zcq",
-        "password": "12311",
+        "username": "zcd1",
+        "nickname": "zc1",
+        "password": "1231",
         "type": 1,
-        "phone": '122',
-        "email":"2323@QQ.com"
+        "auth": 1,
+        "phone": '1231',
+        "email": '1231@qq.com'
     };
     it('return should get  user  with token', function (done) {
         request.post('/auth/v1.0/E001-001/signup')
             .send(user)
             .expect(200, function (err, res) {
                 should.not.exist(err);
-                res.body.should.have.property('success', false);
+                res.body.should.have.property('success', true);
                 res.body.should.have.property('access_token')
                 done();
             });

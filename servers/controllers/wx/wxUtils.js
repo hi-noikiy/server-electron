@@ -1,5 +1,5 @@
 
-const configs = require('./../../configs/config');
+const configs = require('./../../configs');
 const redisKeys = require('./../../configs/redisKeys');
 const wxResTemp = require('./../../utils/wxResTemp');
 

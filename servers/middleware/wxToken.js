@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var cryptoHelper = require('./../utils/cryptoHelper');
 
-var config = require('./../configs/config');
+var config = require('./../configs');
 var redisKeys = require('./../configs/redisKeys');
 
 const _cfg = Object.assign(config.wxCfg,config.wxapi);

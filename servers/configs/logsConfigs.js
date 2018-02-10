@@ -1,3 +1,4 @@
+
 const config = {
     appenders: {
         out: { type: 'console' },

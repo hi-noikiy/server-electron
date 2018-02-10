@@ -3,17 +3,21 @@ const User = models.User;
 const mysql = require('./../utils/mysqlHelper');
 const sqlToXml = require('./../utils/xmlTool').sqlToXml;
 
+
+
+//调用mongodb
 exports.save =async (users)=>{
     const user = new User(users);
     return user.save();
 }
+//调用mongodb
 exports.findOne =async (where)=>{
     return User.findOne(where);
 }
 
-// 注册用户
+// 注册用户 调用mysql存储过程
 exports.sqlAddUser = async (users) => {
-    var xml = sqlToXml({data:users})
+    var xml = sqlToXml({ data:users })
     return new Promise(function (resolve, reject) {
         mysql.query(`CALL sp_function(${xml});`, function (err, docs) {
             if (err) {

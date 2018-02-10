@@ -1,6 +1,6 @@
-const router = require('./../configs/config').router; 
+const router = require('./../configs').router; 
 const redisKeys = require('./../configs/redisKeys');
-const config = require('./../configs/config');
+const config = require('./../configs');
 const Token = require('./../utils/token');
 
 //  检验token 是否有效

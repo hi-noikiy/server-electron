@@ -1,17 +1,18 @@
 {
-  "name": "electron-app",
+  "name": "app",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "bin": {
-    "electron-app": "index.js"
+    "app": "index.js"
   },
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "dev": "node app.js",
-    "start": "pm2 start bin/pm2.json",
+    "dev": "set NODE_ENV=development&&  node app.js ",
+    "start": "set NODE_ENV=production&& pm2 start bin/pm2.json ",
+    "prod": "set NODE_ENV=production&& node app.js ",
     "test": "mocha"
   },
   "author": "",
