@@ -9,8 +9,10 @@ const middleware = require('./../middleware');
 exports.index = async(ctx)=>{
     const access_token = ctx.cookies.get('token');
     var key = redisKeys.webToken();
+    var pid = process.pid;
+    console.log(pid)
     if (access_token) {
         const user = await middleware.getTokenUser(key, access_token);
     }
-    ctx.response.body ='<h1>test</h1>'
+    ctx.render('index')
 } 

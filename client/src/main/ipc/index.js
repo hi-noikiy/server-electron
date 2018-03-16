@@ -1,2 +1,0 @@
-require('./ipcToLogin')
-require('./ipcToIndex')

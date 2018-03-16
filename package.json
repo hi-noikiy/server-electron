@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "set NODE_ENV=development&&  node app.js ",
-    "start": "set NODE_ENV=production&& pm2 start bin/pm2.json ",
+    "start": "set NODE_ENV=production&& pm2 start app.js ",
     "prod": "set NODE_ENV=production&& node app.js ",
     "test": "mocha"
   },
@@ -30,6 +30,7 @@
     "mongoose": "^5.0.0-rc1",
     "mysql": "^2.15.0",
     "redis": "^2.8.0",
+    "sequelize": "^4.35.2",
     "uuid": "^3.1.0",
     "xml2js": "^0.4.19"
   },

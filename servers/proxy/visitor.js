@@ -1,4 +1,4 @@
-const models = require('./../models');
+const models = require('./../models/mongodb');
 const Visitor = models.Visitor;
 
 exports.save = async (visitors) => {

@@ -1,5 +1,5 @@
 const log4js = require('log4js');
-const logsConfigs = require('./../configs/logsConfigs')
+const logsConfigs = require('./../configs/config.logs')
 log4js.configure(logsConfigs)
 let logUtil = {};
 

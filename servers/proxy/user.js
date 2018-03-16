@@ -1,4 +1,4 @@
-const models = require('./../models');
+const models = require('./../models/mongodb');
 const User = models.User;
 const mysql = require('./../utils/mysqlHelper');
 const sqlToXml = require('./../utils/xmlTool').sqlToXml;

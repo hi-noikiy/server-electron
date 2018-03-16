@@ -130,6 +130,7 @@ exports.signup = async (ctx)=>{
         data.password = cryptoHelper.SHA1(password);
         data.user_id = cryptoHelper.UUID();
         data.auth = data.auth || 0;
+        data.created_time = new Date().toLocaleString();
         const user = await User.sqlAddUser(data);
         delete data.password;
         let userAuth = new UserAuth(data);

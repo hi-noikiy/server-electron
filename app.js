@@ -15,7 +15,8 @@ global.app = {};
 
 App.use(koaBody());
 
-App.use(serve("static", __dirname + "/views"));
+App.use(serve("static", __dirname + "/public"));
+App.use(serve("static", __dirname + "/public"));
 
 // 开发环境部署文档
 if (process.env.NODE_ENV !== 'production') {

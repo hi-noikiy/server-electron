@@ -1,4 +1,3 @@
-
 const configs = require('./../../configs');
 const redisKeys = require('./../../configs/redisKeys');
 const wxResTemp = require('./../../utils/wxResTemp');
