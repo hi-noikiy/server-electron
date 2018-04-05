@@ -6,6 +6,7 @@ const Token = require('./../utils/token');
 //  检验token 是否有效
 exports.checkToken = async (ctx, next) => {
     const access_token = ctx.request.body.access_token || ctx.request.query.access_token; 
+    
     if (_getRouter(ctx.params.router)[0] !== router.unverifyToken) {
         var key = redisKeys.apiToken();
         var user = await exports.getTokenUser(access_token, key);
@@ -15,7 +16,7 @@ exports.checkToken = async (ctx, next) => {
         } else {
             ctx.response.body = {
                 success:false,
-                message:'void token'
+                message:'void token'    
             }
         }
     } else {     
@@ -28,13 +29,12 @@ exports.getTokenUser = async (access_token,key)=>{
     const _key = key || redisKeys.apiToken();
     let signature = null, expTime = null, nowTime = Date.now(), _data = null;
     if (!access_token) return _data;
-
     await app.redisClient.hgetVal(key, access_token).then(data => {
         signature = data.signature;
          expTime = data.expTime;
     }).catch(e => {
         signature = null;
-    });
+        });
     if (signature && expTime && (nowTime - expTime) < config.InvalidTime.apitoken) {
         try {
             const user = await Token.tokenVerify(access_token, String(signature));
@@ -54,9 +54,10 @@ exports.getTokenUser = async (access_token,key)=>{
 
 // 权限认证 
 exports.checkAuth = async (ctx, next) => {
-    if (_getRouter(ctx.params.router)[1] !== router.unverifyAuth) {
-        if (true) {
-            console.log('需要权限认证')
+    var auth = _getRouter(ctx.params.router)[1];
+    var userAuth = Number(ctx.request.api_user.auth);
+    if (auth != router.unverifyAuth) {
+        if (userAuth>Number(auth)) { 
             await next();
         } else {
             ctx.response.body = {
@@ -65,7 +66,6 @@ exports.checkAuth = async (ctx, next) => {
             }
         }
     } else {
-        console.log('不需要权限认证')
         await next();
     }
 }

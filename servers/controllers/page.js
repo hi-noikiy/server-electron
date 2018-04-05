@@ -6,13 +6,16 @@ const logger = require('./../utils/logger');
 const redisKeys = require('./../configs/redisKeys');
 const middleware = require('./../middleware');
 
+const RedisMongodb = require('./../lib/redisModb');
 exports.index = async(ctx)=>{
     const access_token = ctx.cookies.get('token');
     var key = redisKeys.webToken();
     var pid = process.pid;
-    console.log(pid)
+
     if (access_token) {
         const user = await middleware.getTokenUser(key, access_token);
-    }
-    ctx.render('index')
+    };
+
+    ctx.body = 'page';
 } 
+

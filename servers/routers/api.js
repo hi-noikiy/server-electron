@@ -1,6 +1,6 @@
 "use strict";
 const Router = require('koa-router');
-const index = require('./../controllers/api')
+const api = require('./../controllers/api')
 const middleware = require('./../middleware');
 const router = new Router();
 
@@ -8,8 +8,10 @@ const router = new Router();
 router.use('/',middleware.checkToken);
 router.use('/',middleware.checkAuth);
 
-router.post('/type', middleware.isToken, middleware.isAuth, index.api);
-router.post('/untoken', middleware.isAuth, index.api);
-router.post('/unauth', middleware.isToken, index.api);
+router.post('/addagencies', middleware.isToken, api.agencies.addagencies);
+router.post('/addroom', middleware.isToken, api.room.addRoom);
+router.post('/addsubject', middleware.isToken, api.subject.addsubject);
+router.post('/addteacher', middleware.isToken, api.teacher.addteacher);
+router.post('/addstudent', middleware.isToken, api.student.addstudent);
 
 module.exports = router;

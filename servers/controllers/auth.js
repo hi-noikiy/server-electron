@@ -1,8 +1,8 @@
 /**
  * 该控制器为所有服务登陆认证等业务 
  */
-const proxy = require('./../proxy');
-const User = proxy.User;
+const proxy = require('./../proxy/mysql');
+const User = proxy.admin;
 const cryptoHelper = require('./../utils/cryptoHelper');
 const Token = require('./../utils/token');
 const redisKeys = require('./../configs/redisKeys');
@@ -40,21 +40,22 @@ const UserAuth = require('./../servers/auth');
  *       "error": "password error"
  *     }
  */
-exports.login = async (ctx)=>{
+exports.login = async (ctx) => {
     const data = ctx.request.body;
     let {username,password} = data;
     password = cryptoHelper.SHA1(password);
     try { 
-        let _user = await User.sqlfindOne({ username: username });
-        if (_user && password === _user.pwd) {
-            delete _user.pwd;
+        let _user = await User.findOne({ username: username, pwd: password });
+        console.log(_user.agencies.dataValues)
+        if (_user) {
+            _user.agencies = _user.agencies ? _user.agencies.dataValues : {};
             let userAuth = new UserAuth(_user);
             await userAuth.saveStatus();
-            if (data.type) { 
+            if (_user.type) { 
                 ctx.response.body={
                     success: true,
                     access_token: userAuth.token,
-                    data: userAuth.user
+                    data: _user
                 };
             } else {       
                 // 重定向到主页
@@ -68,6 +69,7 @@ exports.login = async (ctx)=>{
             }
         }
     } catch (e) {
+        console.log(e)
         ctx.response.body = {
             success: false,
             "error": "error",
@@ -127,24 +129,31 @@ exports.signup = async (ctx)=>{
     try {
         // 检测邮箱密码用户名
         let { password } = data || '';
-        data.password = cryptoHelper.SHA1(password);
+        data.pwd = cryptoHelper.SHA1(password);
         data.user_id = cryptoHelper.UUID();
-        data.auth = data.auth || 0;
-        data.created_time = new Date().toLocaleString();
-        const user = await User.sqlAddUser(data);
-        delete data.password;
-        let userAuth = new UserAuth(data);
-        userAuth.saveStatus()
-        if (data.type) {
-            ctx.response.body = {
-                success:true,
-                data: userAuth.user,
-                access_token: userAuth.token
-            };
+        data.auth = data.auth || 40;
+        const result = await User.addUser(data);
+        if (result.success) {
+            delete data.password;
+            let userAuth = new UserAuth(data);
+            userAuth.saveStatus()
+            if (data.type) {
+                ctx.response.body = {
+                    success:true,
+                    data: userAuth.user,
+                    access_token: userAuth.token
+                };
+            } else {
+                 // 重定向到主页
+                ctx.cookies.set('token', userAuth.token, { maxAge: 10000 })
+                ctx.redirect('/');
+            }
         } else {
-             // 重定向到主页
-            ctx.cookies.set('token', userAuth.token, { maxAge: 10000 })
-            ctx.redirect('/');
+            ctx.body = {
+                success: false,
+                message: e || '',
+                code: 4002
+            };
         }
     } catch (e) {
         ctx.body = {

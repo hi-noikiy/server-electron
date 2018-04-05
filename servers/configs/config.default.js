@@ -1,7 +1,7 @@
 var config={
     v:'v1.0',// 版本号
     server:{
-        port:3000
+        port:3001
     },
     redis:{
         host:'//127.0.0.1:',
@@ -21,7 +21,7 @@ var config={
     },
     router:{
         unverifyToken: 'E001', // 免验证token路由
-        unverifyAuth:'A001' // 免验证权限路由
+        unverifyAuth:'000' // 免验证权限路由
     },
     // 微信 认证登陆获取签名配置
     wxCfg:{

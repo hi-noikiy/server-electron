@@ -4,7 +4,7 @@ const koaBody = require('koa-body')
 const path = require('path');
 const serve = require('koa-static2');
 const App = new Koa();
-const router = require('./servers/routers');
+
 
 //log工具
 const logger = require('./servers/middleware/logger');
@@ -15,7 +15,6 @@ global.app = {};
 
 App.use(koaBody());
 
-App.use(serve("static", __dirname + "/public"));
 App.use(serve("static", __dirname + "/public"));
 
 // 开发环境部署文档
@@ -33,6 +32,9 @@ new MongoDb(configs.mongodb).db().then(function(db){
 //  引入redis mysql
 const Redis = require('./servers/utils/redisHelper');
 const mysql = require('./servers/utils/mysqlHelper');
+const sequelizeHelper = require('./servers/utils/sequelizeHelper');
+global.app.sequelizeHelper = sequelizeHelper;
+// require('./servers/models/mysql')
 
 //建立一个reidis 实例 然后挂载到全局
 const redisClient = new Redis({ url: configs.redis.host + configs.redis.port, option: { db: 0 } });
@@ -48,6 +50,7 @@ App.use(async (ctx, next) => {
 });
 
 
+const router = require('./servers/routers');
 // 最后挂载路由到app
 App.use(router.routes());
 App.use(router.allowedMethods())

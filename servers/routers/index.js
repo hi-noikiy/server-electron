@@ -24,7 +24,6 @@ router.use('/wx', wx.routes(), wx.allowedMethods());
 
 module.exports = router;
 
-
 // 加入版本号前缀
 function _version(routers,url){
     if(!Array.isArray(routers)){
