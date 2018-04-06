@@ -7,23 +7,26 @@ const orderModel = app.sequelizeHelper.define('softOrder', {
   orderid: {
     type: Sequelize.UUID, allowNull: false, unique: true , primaryKey: true
   },
-  value: {
+  amount: { // 金额
     type: Sequelize.INTEGER ,allowNull: false, defaultValue:0
   },
-  calss: {
+  calss: { // 课时
     type: Sequelize.INTEGER, allowNull: false, defaultValue: 0
   },
-  time_type: {
-    type: Sequelize.INTEGER, allowNull: false, defaultValue: 0
+  time_type: { // 时长
+    type: Sequelize.INTEGER, allowNull: false, defaultValue: 45
   },
-  pay_type: {
+  pay_type: { // 支付方式
     type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 //(1.微信 2.支付宝 3.现金 4.刷卡 5.其他 )
   },
   note: {
-    type: Sequelize.STRING, allowNull: false
+    type: Sequelize.STRING
   },
-  status: {
-    type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false
+  status: { // 订单状态
+    type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true
+  },
+  created_number: {
+    type: Sequelize.UUID
   },
   start_time: {
     type: Sequelize.DATE

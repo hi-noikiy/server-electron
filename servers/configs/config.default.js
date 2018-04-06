@@ -47,6 +47,10 @@ var config={
     },
     InvalidTime: {
         apitoken:3600*1000*4 //api token过期时长
+    },
+    qiniu: {
+        AccessKey: "Fr7deZZYAMO_rtYdTHX7w8F6G7yTx-cqRWNsOSvb",
+        SecretKey: "hsP53EldHkctZ-6u_qFziySkat3B_LGmP8FY5uD9",
     }
 }
 

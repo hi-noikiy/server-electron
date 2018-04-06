@@ -8,7 +8,7 @@ module.exports = function () {
         let cj = {};
     
         cj.UUID = function() {
-            return uuid.v4().replace(/[-]/g, '')
+            return uuid.v1().replace(/[-]/g, '')
         };
         cj.MD5 = function(text) {
             return crypto.createHash('md5').update(text +='').digest('hex');

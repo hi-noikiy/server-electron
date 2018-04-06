@@ -7,7 +7,7 @@ const attendanceModel = app.sequelizeHelper.define('softAttendance', {
   attendanceid: {
     type: Sequelize.UUID, allowNull: false, unique: true, primaryKey: true
   },
-  leavetime: {
+  attivetime: {
     type: Sequelize.DATE
   },
   note: {
@@ -18,6 +18,9 @@ const attendanceModel = app.sequelizeHelper.define('softAttendance', {
   },
   is_deleted: {
     type: Sequelize.TINYINT, allowNull: false, defaultValue: 0 // 0为未删除 1为已删除
+  },
+  created_number: { // 创建者
+    type: Sequelize.UUID, allowNull: false,
   }
 }, {
     comment: '考勤表'

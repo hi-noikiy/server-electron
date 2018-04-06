@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
 
 const studentModel = app.sequelizeHelper.define('softStudent', {
-  id: {
-    type: Sequelize.INTEGER, allowNull: false, unique: true, autoIncrement: true, primaryKey: true
-  },
   uuid: {
     type: Sequelize.UUID, allowNull: false, unique: true, primaryKey: true
+  },
+  id: {
+    type: Sequelize.INTEGER, allowNull: false, unique: true, autoIncrement: true, primaryKey: true
   },
   name: {
     type: Sequelize.STRING, allowNull: false, unique: true

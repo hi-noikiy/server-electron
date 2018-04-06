@@ -61,4 +61,6 @@ process.on('uncaughtException', function (e) {
 
 const server = App.listen(configs.server.port);
 
+// require('./servers/utils/qiniuHelper')
+
 module.exports = server;
