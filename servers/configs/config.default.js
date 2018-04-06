@@ -4,7 +4,7 @@ var config={
         port:3001
     },
     redis:{
-        host:'//127.0.0.1:',
+        host:'//192.168.1.102:',
         port:6379
     },
     mongodb:{
